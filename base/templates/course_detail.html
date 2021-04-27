@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Course Detail{% endblock title %}
+{% block content %}
+<h1>{{ Course.title }}</h1>
+<strong>{{ Course.description }}</strong>
+<h3>{{ Course.startDate }} to {{ Course.endDate }}</h3>
+<h3>Your teammates who are in this course:</h3>
+<p>{{ Course.students }}</p>
+
+{% if Course.available  %}
+<h4>This course is available! Enroll now!</h4>
+
+{% else %}
+<h4>This course is no longer available</h4>
+{% endif %}
+{% endblock content %}

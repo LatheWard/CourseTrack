@@ -15,6 +15,7 @@ class Course(models.Model):
     endDate = models.DateField(default=None)
     description = models.TextField(default=None, max_length=200)
     students = models.ManyToManyField(The_User, related_name='courses_completed')
+    available = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse('course_detail', args=[str(self.id)])
