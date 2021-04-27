@@ -16,12 +16,9 @@ class CourseListView(ListView):
 
 class CourseDetailView(DetailView):
     model = Course
-    template = 'coursedetail.html'
+    template = 'course_detail.html'
 
-class CourseCreateView(CreateView):
-    model = Course
-    template = 'course_new.html'
-    fields = ['title', 'startDate', 'endDate', 'description', 'size', 'availability']
+
 
 
 
