@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 # Create your models here.
-# user model
+
 
 class Course(models.Model):
     title = models.TextField
@@ -11,12 +11,15 @@ class Course(models.Model):
     size = models.PositiveIntegerField
     avalability = models.PositiveIntegerField
 
+# user model
 class The_User(AbstractUser):
-    coursesCompleted = models.ForeignKey(Course, null=True, on_delete=models.SET_NULL)
+    coursesCompleted = models.ManyToManyField(Course, null=True, related_name='student')
 
     def __str__(self):
         return self.username
-        
+
+
+# Class/Student elements        
 class UserGrade(models.Model):
     isCompleted = models.BooleanField
     numGrade = models.PositiveIntegerField
