@@ -24,4 +24,5 @@ class UserGrade(models.Model):
     isCompleted = models.BooleanField
     numGrade = models.PositiveIntegerField
     student = models.ForeignKey(The_User, null=True, on_delete=models.SET_NULL)
+    course = models.ForeignKey(Course, null=True, on_delete=models.SET_NULL)
 
