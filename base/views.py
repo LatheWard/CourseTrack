@@ -5,23 +5,15 @@ from .models import Course
 # Create your views here.
 
 class HomePageView(TemplateView):
-    basepage = 'base.html'
-
-class HomePageView(TemplateView):
-    homepage = 'home.html'
+    template_name = 'home.html'
 
 class CourseListView(ListView):
     model = Course
-    template = 'course_list.html'
+    template_name = 'course_list.html'
 
 class CourseDetailView(DetailView):
     model = Course
-    template = 'course_detail.html'
-
-
-
-
-
+    template_name = 'course_detail.html'
 
 # Possible Student detail page?
 
