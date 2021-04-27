@@ -5,9 +5,9 @@ from .models import The_User
 class The_UserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = The_User
-        fields = UserCreationForm.Meta.fields + ('coursesTaken',)
+        fields = UserCreationForm.Meta.fields
 
-class The_UserChangeForm(UserChangeForm):
+class ChangeForm(UserChangeForm):
     class Meta(UserChangeForm):
         model = The_User
         fields = UserChangeForm.Meta.fields
