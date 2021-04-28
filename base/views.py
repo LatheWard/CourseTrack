@@ -4,13 +4,12 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import The_UserCreationForm
+from .forms import The_UserCreationForm, The_UserChangeForm
 from .models import Course
-from django.contrib.auth import get_user_model
+
 
 # Create your views here.
 
-User = get_user_model()
 
 class HomePageView(TemplateView):
     template_name = "home.html"
@@ -27,10 +26,12 @@ class CourseDetailView(DetailView):
     context_object_name = "Course"
 
 
-class SignUp(generic.CreateView):
+class SignUp(CreateView):
     form_class = The_UserCreationForm
     success_url = reverse_lazy("login")
     template_name = "signup.html"
 
 
-# Possible Student detail page?
+
+
+

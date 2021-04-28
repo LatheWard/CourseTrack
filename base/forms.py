@@ -7,7 +7,7 @@ class The_UserCreationForm(UserCreationForm):
         model = The_User
         fields = ('username', 'bio',)
 
-class ChangeForm(UserChangeForm):
+class The_UserChangeForm(UserChangeForm):
     class Meta(UserChangeForm):
         model = The_User
         fields = UserChangeForm.Meta.fields
