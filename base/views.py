@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import The_UserCreationForm, The_UserChangeForm
-from .models import Course
+from .models import course
 
 
 # Create your views here.
@@ -16,11 +16,11 @@ class HomePageView(TemplateView):
 
 
 class CourseListView(ListView):
-    model = Course
+    model = course
     template_name = "course_list.html"
 
 class CourseDetailView(DetailView):
-    model = Course
+    model = course
     template_name = "course_detail.html"
     context_object_name = "Course"
 

@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% block title %}course Detail{% endblock title %} {%
-block content %}
+{% extends 'base.html' %} 
+{% block title %} course Detail {% endblock title %} 
+{% block content %}
 
 <div class="card" style="width: 18rem; margin: 1rem 1rem 1rem 1rem">
   <div class="card-body">
@@ -8,7 +9,7 @@ block content %}
       {{ course.startDate }} to {{ course.endDate }}
     </h6>
     <p class="card-text">{{ course.description }}</p>
-    {% if course.available %}
+    {% if course.available == True %}
     <h4>This course is available</h4>
     <a
       class="btn"
