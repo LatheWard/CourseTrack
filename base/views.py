@@ -33,7 +33,7 @@ class SignUp(CreateView):
 def change_course(request, instruction, pk):
     course = Course.objects.get(pk=pk)
     if instruction == 'subscribe':
-        Course.subscribe(request.The_User, course)
+        course.subscribe(request.The_User, course)
     elif instruction == 'unsubscribe':
-        Course.unsubscribe(request.The_User, course)
-    return redirect('Course:index')
+        course.unsubscribe(request.The_User, course)
+    return redirect('course:index')

@@ -1,23 +1,33 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %}course Detail{% endblock title %} {%
+block content %}
 
-{% block title %}Course Detail{% endblock title %}
-{% block content %}
-
-<div class="card" style="width: 18rem; margin: 1rem 1rem 1rem 1rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{ Course.title }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{ Course.startDate }} to {{ Course.endDate }}</h6>
-      <p class="card-text">{{ Course.description }}</p>
-      {% if Course.available %}
-        <h4>This course is available</h4>
-        <a class="btn" href="{% url 'course:change-course' instruction='subscribe' pk=course.id%}" class="card-link">Enroll now</a>
-      {% elif course in request.The_User.course_set.all %}
-      <a class="btn" href="{% url 'course:change-course' instruction='unsubscribe' pk=course.id%}" class="card-link">Remove from class</a>
-        {% else %}
-        <h4>This course is no longer available</h4>
-      {% endif %}
-      <h3>Your teammates who are in this course:</h3>
-      <p>{{ Course.students }}</p>
-    </div>
+<div class="card" style="width: 18rem; margin: 1rem 1rem 1rem 1rem">
+  <div class="card-body">
+    <h5 class="card-title">{{ course.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      {{ course.startDate }} to {{ course.endDate }}
+    </h6>
+    <p class="card-text">{{ course.description }}</p>
+    {% if course.available %}
+    <h4>This course is available</h4>
+    <a
+      class="btn"
+      href="{% url 'course:change-course' instruction='subscribe' pk=course.id%}"
+      class="card-link"
+      >Enroll now</a
+    >
+    {% elif course in request.The_User.course_set.all %}
+    <a
+      class="btn"
+      href="{% url 'course:change-course' instruction='unsubscribe' pk=course.id%}"
+      class="card-link"
+      >Remove from class</a
+    >
+    {% else %}
+    <h4>This course is no longer available</h4>
+    {% endif %}
+    <h3>Your teammates who are in this course:</h3>
+    <p>{{ course.students }}</p>
   </div>
+</div>
 {% endblock content %}

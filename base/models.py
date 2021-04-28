@@ -10,7 +10,7 @@ class The_User(AbstractUser):
     def __str__(self):
         return self.username
 
-class Course(models.Model):
+class course(models.Model):
     title = models.CharField(default=None, max_length=40)
     startDate = models.DateField(default=None)
     endDate = models.DateField(default=None)
@@ -39,5 +39,5 @@ class UserGrade(models.Model):
     isCompleted = models.BooleanField
     numGrade = models.PositiveIntegerField
     student = models.ForeignKey(The_User, null=True, on_delete=models.SET_NULL)
-    course = models.ForeignKey(Course, null=True, on_delete=models.SET_NULL)
+    course = models.ForeignKey(course, null=True, on_delete=models.SET_NULL)
 
