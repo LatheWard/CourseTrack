@@ -22,8 +22,7 @@ class CourseListView(ListView):
 class CourseDetailView(DetailView):
     model = course
     template_name = "course_detail.html"
-    context_object_name = "Course"
-
+    context_object_name = "course"
 
 class SignUp(CreateView):
     form_class = The_UserCreationForm
@@ -31,9 +30,9 @@ class SignUp(CreateView):
     template_name = "signup.html"
 
 def change_course(request, instruction, pk):
-    course = Course.objects.get(pk=pk)
+    tCourse = course.objects.get(pk=pk)
     if instruction == 'subscribe':
-        course.subscribe(request.The_User, course)
+        course.subscribe(request.user, tCourse)
     elif instruction == 'unsubscribe':
-        course.unsubscribe(request.The_User, course)
-    return redirect('course:index')
+        course.unsubscribe(request.user, tCourse)
+    return redirect('home')

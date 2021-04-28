@@ -20,11 +20,11 @@ class course(models.Model):
 
     @classmethod
     def subscribe(cls, current_user, new_course):
-        new_course.users.add(current_user)
+        new_course.students.add(current_user)
 
     @classmethod
     def unsubscribe(cls, current_user, cancel_course):
-        cancel_course.users.remove(current_user)
+        cancel_course.students.remove(current_user)
 
     def get_absolute_url(self):
         return reverse('course_detail', args=[str(self.id)])
