@@ -8,19 +8,18 @@
       <h5 class="card-title">{{ Course.title }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{ Course.startDate }} to {{ Course.endDate }}</h6>
       <p class="card-text">{{ Course.description }}</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      {% if Course.available  %}
+        <h4>This course is available</h4>
+        <a href="#" class="card-link">Enroll now</a>
+      {% else %}
+        <h4>This course is no longer available</h4>
+      {% endif %}
+      <h3>Your teammates who are in this course:</h3>
+      <p>{{ Course.students }}</p>
     </div>
   </div>
 
 <!-- #---------# -->
-<h3>Your teammates who are in this course:</h3>
-<p>{{ Course.students }}</p>
 
-{% if Course.available  %}
-<h4>This course is available! Enroll now!</h4>
 
-{% else %}
-<h4>This course is no longer available</h4>
-{% endif %}
 {% endblock content %}
