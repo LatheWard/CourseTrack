@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
@@ -30,3 +30,10 @@ class SignUp(CreateView):
     success_url = reverse_lazy("login")
     template_name = "signup.html"
 
+def change_course(request, instruction, pk):
+    course = Course.objects.get(pk=pk)
+    if instruction == 'subscribe':
+        Course.subscribe(request.The_User, course)
+    elif instruction == 'unsubscribe':
+        Course.unsubscribe(request.The_User, course)
+    return redirect('courses:index')

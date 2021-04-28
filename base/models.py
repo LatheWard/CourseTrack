@@ -18,6 +18,14 @@ class Course(models.Model):
     students = models.ManyToManyField(The_User, related_name='courses_completed')
     available = models.BooleanField(default=False)
 
+    @classmethod
+    def subscribe(cls, current_user, new_course):
+        new_course.users.add(current_user)
+
+    @classmethod
+    def unsubscribe(cls, current_user, cancel_course):
+        cancel_course.users.remove(current_user)
+
     def get_absolute_url(self):
         return reverse('course_detail', args=[str(self.id)])
 
