@@ -5,6 +5,7 @@ from django.urls import reverse
 
 # user model
 class The_User(AbstractUser):
+    bio = models.TextField(default=None, null=True, blank=True)
 
     def __str__(self):
         return self.username

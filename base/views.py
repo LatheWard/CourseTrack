@@ -28,7 +28,7 @@ class CourseDetailView(DetailView):
 
 
 class SignUp(generic.CreateView):
-    form_class = UserCreationForm
+    form_class = The_UserCreationForm
     success_url = reverse_lazy("login")
     template_name = "signup.html"
 

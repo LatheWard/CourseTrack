@@ -2,9 +2,18 @@
 
 {% block title %}Course Detail{% endblock title %}
 {% block content %}
-<h1>{{ Course.title }}</h1>
-<strong>{{ Course.description }}</strong>
-<h3>{{ Course.startDate }} to {{ Course.endDate }}</h3>
+
+<div class="card" style="width: 18rem; margin: 1rem 1rem 1rem 1rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ Course.title }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ Course.startDate }} to {{ Course.endDate }}</h6>
+      <p class="card-text">{{ Course.description }}</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+
+<!-- #---------# -->
 <h3>Your teammates who are in this course:</h3>
 <p>{{ Course.students }}</p>
 

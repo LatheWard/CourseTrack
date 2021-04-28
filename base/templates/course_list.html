@@ -3,7 +3,9 @@
 {% block title %} List of courses {% endblock title %}
 {% block content %}
     {% for course in course_list %}
-    <h2><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></h2>
-    <p>{{ course.description }}</p>
+    <div class="card">
+        <div class="card-body"><h2><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></h2></div>
+        <p>{{ course.description }}</p>
+    </div>
     {% endfor %}
 {% endblock content %}
