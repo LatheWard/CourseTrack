@@ -36,4 +36,4 @@ def change_course(request, instruction, pk):
         Course.subscribe(request.The_User, course)
     elif instruction == 'unsubscribe':
         Course.unsubscribe(request.The_User, course)
-    return redirect('courses:index')
+    return redirect('Course:index')
