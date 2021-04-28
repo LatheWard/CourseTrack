@@ -8,18 +8,16 @@
       <h5 class="card-title">{{ Course.title }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{ Course.startDate }} to {{ Course.endDate }}</h6>
       <p class="card-text">{{ Course.description }}</p>
-      {% if Course.available  %}
+      {% if Course.available %}
         <h4>This course is available</h4>
-        <a href="#" class="card-link">Enroll now</a>
-      {% else %}
+        <a class="btn" href="{% url 'course:change-course' instruction='subscribe' pk=course.id%}" class="card-link">Enroll now</a>
+      {% elif course in request.The_User.course_set.all %}
+      <a class="btn" href="{% url 'course:change-course' instruction='unsubscribe' pk=course.id%}" class="card-link">Remove from class</a>
+        {% else %}
         <h4>This course is no longer available</h4>
       {% endif %}
       <h3>Your teammates who are in this course:</h3>
       <p>{{ Course.students }}</p>
     </div>
   </div>
-
-<!-- #---------# -->
-
-
 {% endblock content %}
