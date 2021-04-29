@@ -33,8 +33,6 @@ class course(models.Model):
     def __str__(self):
         return self.title
 
-
-
 # Class/Student elements        
 class UserGrade(models.Model):
     isCompleted = models.BooleanField()

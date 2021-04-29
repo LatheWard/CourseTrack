@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import The_User
+from django.forms import ModelForm
+from .models import The_User, UserGrade
 
 class The_UserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
@@ -12,4 +13,7 @@ class The_UserChangeForm(UserChangeForm):
         model = The_User
         fields = UserChangeForm.Meta.fields
 
-
+class UserGradeForm(ModelForm):
+    class Meta:
+        model = UserGrade
+        fields = ['isCompleted', 'numGrade', 'student', 'course']
