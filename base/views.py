@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import The_UserCreationForm, The_UserChangeForm
+from .forms import The_UserCreationForm, The_UserChangeForm, UserGradeForm
 from .models import course
 
 
@@ -37,3 +37,8 @@ def change_course(request, instruction, pk):
     elif instruction == 'unsubscribe':
         course.unsubscribe(request.user, tCourse)
     return redirect('course_list')
+
+class UserGradeFormView(CreateView):
+    form_class = UserGradeForm
+    success_url = reverse_lazy("home")
+    template_name = "course_complete.html"
