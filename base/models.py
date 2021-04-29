@@ -16,7 +16,7 @@ class course(models.Model):
     startDate = models.DateField(default=None)
     endDate = models.DateField(default=None)
     description = models.TextField(default=None, max_length=200)
-    students = models.ManyToManyField(The_User, related_name='courses_completed')
+    students = models.ManyToManyField(The_User, related_name='courses_completed', blank=True, null=True)
     available = models.BooleanField(default=False)
 
     @classmethod

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import CreateView
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -35,9 +36,8 @@ class SignUp(CreateView):
     success_url = reverse_lazy("login")
     template_name = "signup.html"
 
-def get_user_profile(request, username):
-    user_prof = The_User.objects.get(username=username)
-    return render(request, '<base>/user_profile.html', {"user":user_prof})
+def get_user_profile(request):
+    return render(request, 'user_detail.html')
 
 def change_course(request, instruction, pk):
     tCourse = course.objects.get(pk=pk)
