@@ -2,14 +2,14 @@
 {% block title %} course Detail {% endblock title %} 
 {% block content %}
 
-<div class="card" style="width: 18rem; margin: 1rem 1rem 1rem 1rem">
+<div class="card" style="display: inline; width: 40rem; margin: 1rem 1rem 1rem 1rem; text-align: center;">
   <div class="card-body">
-    <h5 class="card-title">{{ course.title }}</h5>
+    <h1 class="card-title">{{ course.title }}</h1>
     <h6 class="card-subtitle mb-2 text-muted">
       {{ course.startDate }} to {{ course.endDate }}
     </h6>
     <p class="card-text">{{ course.description }}</p>
-    {% if course.available == True %}
+    {% if course.available == True and course not in request.The_User.course_set.all %}
     <button><a
       class="btn"
       href="{% url 'change-course' 'subscribe' course.id %}"
@@ -27,7 +27,7 @@
     {% else %}
     <h4>This course is no longer available</h4>
     {% endif %}
-    <h3>Your teammates who are in this course:</h3>
+    <h4>Your teammates who are in this course:</h4>
     <p>{{ course.students }}</p>
     
   </div>
