@@ -10,8 +10,8 @@
       {{ course.startDate }} to {{ course.endDate }}
     </h6>
     <p class="card-text">{{ course.description }}</p>
-    <p>{{ request.user.course_set.all }}</p>
-    {% if course.available == True and not course in request.user.course_set.all %}
+    <p>{{ request.user.courses_completed.all }}</p>
+    {% if course.available and not course in request.user.courses_completed.all %}
     <button><a
       class="btn"
       href="{% url 'change-course' 'subscribe' course.id %}"
@@ -20,12 +20,12 @@
     ></button>
     <h4>This course is available</h4>
     {% else %}
-    <a
+    <button><a
     class="btn"
     href="{% url 'change-course' 'unsubscribe' course.id %}"
     class="card-link"
     >Remove from class</a
-    >
+    ></button>
     {% endif %}
   </div>
 </div>

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
-from django.utils.decorators import method_decorator
+
 # Create your models here.
 
 # user model
@@ -19,11 +19,11 @@ class course(models.Model):
     students = models.ManyToManyField(The_User, related_name='courses_completed')
     available = models.BooleanField(default=False)
 
-    @method_decorator
+    @classmethod
     def subscribe(cls, current_user, new_course):
         new_course.students.add(current_user)
 
-    @method_decorator
+    @classmethod
     def unsubscribe(cls, current_user, cancel_course):
         cancel_course.students.remove(current_user)
 
@@ -37,8 +37,8 @@ class course(models.Model):
 
 # Class/Student elements        
 class UserGrade(models.Model):
-    isCompleted = models.BooleanField
-    numGrade = models.PositiveIntegerField
+    isCompleted = models.BooleanField()
+    numGrade = models.PositiveIntegerField()
     student = models.ForeignKey(The_User, null=True, on_delete=models.SET_NULL)
     course = models.ForeignKey(course, null=True, on_delete=models.SET_NULL)
 
