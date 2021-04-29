@@ -17,7 +17,7 @@ class course(models.Model):
     endDate = models.DateField(default=None)
     description = models.TextField(default=None, max_length=200)
     students = models.ManyToManyField(The_User, related_name='courses_completed', blank=True, null=True)
-    available = models.BooleanField(default=False)
+    available = models.BooleanField(default=True)
 
     @classmethod
     def subscribe(cls, current_user, new_course):
@@ -35,7 +35,7 @@ class course(models.Model):
 
 # Class/Student elements        
 class UserGrade(models.Model):
-    isCompleted = models.BooleanField()
+    isCompleted = models.BooleanField(default=True)
     numGrade = models.PositiveIntegerField()
     student = models.ForeignKey(The_User, null=True, on_delete=models.SET_NULL)
     course = models.ForeignKey(course, null=True, on_delete=models.SET_NULL)
