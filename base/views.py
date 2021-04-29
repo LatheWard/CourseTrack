@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import The_UserCreationForm, The_UserChangeForm, UserGradeForm
-from .models import course
+from .models import course, The_User
 
 
 # Create your views here.
@@ -25,10 +25,19 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
     template_name = "course_detail.html"
     context_object_name = "course"
 
+class UserDetailView(LoginRequiredMixin, DetailView):
+    model = The_User
+    template_name = "user_detail.html"
+    context_object_name = "user_profile"
+
 class SignUp(CreateView):
     form_class = The_UserCreationForm
     success_url = reverse_lazy("login")
     template_name = "signup.html"
+
+def get_user_profile(request, username):
+    user_prof = The_User.objects.get(username=username)
+    return render(request, '<base>/user_profile.html', {"user":user_prof})
 
 def change_course(request, instruction, pk):
     tCourse = course.objects.get(pk=pk)
