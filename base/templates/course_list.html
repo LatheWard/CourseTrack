@@ -2,9 +2,13 @@
 
 {% block title %} List of courses {% endblock title %}
 {% block content %}
-<h1>List</h1>
+    {% if not user.is_authenticated %}
+    <h1>You are not logged in!</h1>
+    <h3><a href="{% url 'login' %}">Log In</a></h3>
+    {% else %}
     {% for course in course_list %}
       <h2><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></h2>
         <p>{{ course.description }}</p>
     {% endfor %}
+    {% endif %}
 {% endblock content %}

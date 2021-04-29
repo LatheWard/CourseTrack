@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import The_UserCreationForm, The_UserChangeForm
@@ -19,7 +20,7 @@ class CourseListView(ListView):
     model = course
     template_name = "course_list.html"
 
-class CourseDetailView(DetailView):
+class CourseDetailView(LoginRequiredMixin, DetailView):
     model = course
     template_name = "course_detail.html"
     context_object_name = "course"

@@ -5,11 +5,13 @@
 <div class="card" style="display: inline; width: 40rem; margin: 1rem 1rem 1rem 1rem; text-align: center;">
   <div class="card-body">
     <h1 class="card-title">{{ course.title }}</h1>
+    <h2>{{ course.id }}</h2>
     <h6 class="card-subtitle mb-2 text-muted">
       {{ course.startDate }} to {{ course.endDate }}
     </h6>
     <p class="card-text">{{ course.description }}</p>
-    {% if course.available == True and course not in request.The_User.course_set.all %}
+    <p>{{ request.user.course_set.all }}</p>
+    {% if course.available == True and not course in request.user.course_set.all %}
     <button><a
       class="btn"
       href="{% url 'change-course' 'subscribe' course.id %}"
@@ -17,19 +19,14 @@
       >Enroll now</a
     ></button>
     <h4>This course is available</h4>
-    {% elif course in request.The_User.course_set.all %}
+    {% else %}
     <a
     class="btn"
     href="{% url 'change-course' 'unsubscribe' course.id %}"
     class="card-link"
     >Remove from class</a
     >
-    {% else %}
-    <h4>This course is no longer available</h4>
     {% endif %}
-    <h4>Your teammates who are in this course:</h4>
-    <p>{{ course.students }}</p>
-    
   </div>
 </div>
 {% endblock content %}

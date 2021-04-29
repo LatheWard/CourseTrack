@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 # Create your models here.
 
 # user model
@@ -18,11 +19,11 @@ class course(models.Model):
     students = models.ManyToManyField(The_User, related_name='courses_completed')
     available = models.BooleanField(default=False)
 
-    @classmethod
+    @method_decorator
     def subscribe(cls, current_user, new_course):
         new_course.students.add(current_user)
 
-    @classmethod
+    @method_decorator
     def unsubscribe(cls, current_user, cancel_course):
         cancel_course.students.remove(current_user)
 
