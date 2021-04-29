@@ -5,7 +5,12 @@
 <h1>{{ user.first_name }} {{ user.last_name }}</h1>
 <h5>{{ user.bio }}</h5>
 <div class="card">
-    <div class="card-body">{{ user.courses }}</div>
+    {% if user.courses_completed < 1 %}
+    <div class="card-body"><h3>This user hasn't finished any courses</h3></div>
+    {% else %}
+    <div class="card-body"><p>{{ user.courses_completed }}</p></div>
+    {% endif %}
+    
 </div>
 
 {% endblock content %}

@@ -5,12 +5,10 @@
 <div class="card" style="display: inline; width: 40rem; margin: 1rem 1rem 1rem 1rem; text-align: center;">
   <div class="card-body">
     <h1 class="card-title">{{ course.title }}</h1>
-    <h2>{{ course.id }}</h2>
     <h6 class="card-subtitle mb-2 text-muted">
       {{ course.startDate }} to {{ course.endDate }}
     </h6>
     <p class="card-text">{{ course.description }}</p>
-    <p>{{ request.user.courses_completed.all }}</p>
     {% if course.available and not course in request.user.courses_completed.all %}
     <button><a
       class="btn"
@@ -24,7 +22,7 @@
     class="btn"
     href="{% url 'change-course' 'unsubscribe' course.id %}"
     class="card-link"
-    >Remove from class</a
+    >Leave Class</a
     ></button>
 
     <button><a class="btn" href="{% url 'course_complete' %}"> Class Completion Form</a></button>
