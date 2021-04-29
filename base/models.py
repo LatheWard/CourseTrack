@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+from django.core.validators import MaxValueValidator
 
 # Create your models here.
 
@@ -36,7 +37,10 @@ class course(models.Model):
 # Class/Student elements        
 class UserGrade(models.Model):
     isCompleted = models.BooleanField(default=True)
-    numGrade = models.PositiveIntegerField()
+    numGrade = models.PositiveIntegerField(validators=[MaxValueValidator(100)])
     student = models.ForeignKey(The_User, null=True, on_delete=models.SET_NULL)
     course = models.ForeignKey(course, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return '{0}, {1}'.format(self.student, self.course)
 
