@@ -6,7 +6,7 @@ from .models import The_User, UserGrade
 class The_UserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = The_User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password', 'bio',)
+        fields = ('username', 'first_name', 'last_name', 'email', 'bio',)
 
 class The_UserChangeForm(UserChangeForm):
     class Meta(UserChangeForm):
