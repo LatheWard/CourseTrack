@@ -2,9 +2,17 @@
 
 {% block title %}{{user.username}}{% endblock title %}
 {% block content %}
-<h1 style="margin: 1rem 1rem 1rem 1rem">{{ user.first_name }} {{ user.last_name }}</h1>
+<div style="display: grid;">
+<h1 style="margin: 1rem 1rem 1rem 1rem;">{{ user.first_name }} {{ user.last_name }}</h1>
 <h5 style="margin: 1rem 1rem 1rem 1rem">{{ user.bio }}</h5>
-
+</div>
+<h3>Courses I'm enrolled in</h3>
+{% for class in user.courses_completed.all %}
+<div class="card">
+    <h5 class="card-header">{{ class.title }}</h5>
+    </div>
+  </div>
+  {% endfor %}
 
 <h3>Courses I've Completed</h3>
 {% for Sgrade in user.grade.all %}
