@@ -47,7 +47,11 @@ def change_course(request, instruction, pk):
         course.unsubscribe(request.user, tCourse)
     return redirect('course_list')
 
-class UserGradeFormView(CreateView):
+class UserGradeFormView(LoginRequiredMixin, CreateView):
     form_class = UserGradeForm
     success_url = reverse_lazy("home")
     template_name = "course_complete.html"
+
+    def form_valid(self, form):
+        form.instance.student = self.request.user
+        return super().form_valid(form)

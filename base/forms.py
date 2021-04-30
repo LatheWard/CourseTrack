@@ -16,4 +16,4 @@ class The_UserChangeForm(UserChangeForm):
 class UserGradeForm(ModelForm):
     class Meta:
         model = UserGrade
-        fields = ['isCompleted', 'numGrade', 'student', 'course']
+        fields = ['isCompleted', 'numGrade', 'course']
