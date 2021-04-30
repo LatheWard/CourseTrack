@@ -4,12 +4,13 @@
 {% block content %}
 <h1>{{ user.first_name }} {{ user.last_name }}</h1>
 <h5>{{ user.bio }}</h5>
-<!-- <div class="card">
-    {% if user.courses_completed.all < 1 %}
+<div class="card">
+    {{ user.grade }}
+    {% if user.grade.count < 1 %}
     <div class="card-body"><h3>This user hasn't finished any courses</h3></div>
     {% else %}
-    <div class="card-body"><p>{{ user.courses_completed }}</p></div>
-    {% endif %} -->
+    <div class="card-body"><p>{{ user.grade }}</p></div>
+    {% endif %}
     
 </div>
 

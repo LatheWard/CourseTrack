@@ -39,7 +39,7 @@ class course(models.Model):
 class UserGrade(models.Model):
     isCompleted = models.BooleanField(default=True)
     numGrade = models.PositiveIntegerField(validators=[MaxValueValidator(100)])
-    student = models.ForeignKey(The_User, null=True, on_delete=models.SET_NULL)
+    student = models.ForeignKey(The_User, related_name='grade', null=True, on_delete=models.SET_NULL)
     course = models.ForeignKey(course, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
