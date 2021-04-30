@@ -10,7 +10,7 @@
 {% for Sgrade in user.grade.all %}
 {% if Sgrade.student == user %}
 <div class="card">
-    <h5 class="card-header">{{ Sgrade.course }}</h5>
+    <h5 class="card-header" >{{ Sgrade.course }}</h5>
     <div class="card-body">
       <h5 class="card-title">Grade:  {{ Sgrade.numGrade }}</h5>
     </div>

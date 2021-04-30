@@ -7,8 +7,9 @@
     <h3><a href="{% url 'login' %}">Log In</a></h3>
     {% else %}
     {% for course in course_list %}
-      <h2><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></h2>
-        <p>{{ course.description }}</p>
+      <h2 style= 'margin: 1rem 1rem 1rem 1rem'><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></h2>
+      <p style= 'margin: 1rem 1rem 1rem 1rem'>{{ course.description }}</p>
+      <h1> - </h1>
     {% endfor %}
     {% endif %}
 {% endblock content %}
