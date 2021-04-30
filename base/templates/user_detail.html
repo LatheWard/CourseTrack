@@ -2,16 +2,20 @@
 
 {% block title %}{{user.username}}{% endblock title %}
 {% block content %}
-<h1>{{ user.first_name }} {{ user.last_name }}</h1>
-<h5>{{ user.bio }}</h5>
+<h1 style="margin: 1rem 1rem 1rem 1rem">{{ user.first_name }} {{ user.last_name }}</h1>
+<h5 style="margin: 1rem 1rem 1rem 1rem">{{ user.bio }}</h5>
+
+
+<h3>Courses I've Completed</h3>
+{% for Sgrade in user.grade.all %}
+{% if Sgrade.student == user %}
 <div class="card">
-    {{ user.grade }}
-    {% if user.grade.count < 1 %}
-    <div class="card-body"><h3>This user hasn't finished any courses</h3></div>
-    {% else %}
-    <div class="card-body"><p>{{ user.grade }}</p></div>
-    {% endif %}
-    
-</div>
+    <h5 class="card-header">{{ Sgrade.course }}</h5>
+    <div class="card-body">
+      <h5 class="card-title">Grade:  {{ Sgrade.numGrade }}</h5>
+    </div>
+  </div>
+  {% endif%}
+  {% endfor %}
 
 {% endblock content %}
