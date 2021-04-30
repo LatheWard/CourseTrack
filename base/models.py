@@ -15,6 +15,7 @@ class The_User(AbstractUser):
 class course(models.Model):
     title = models.CharField(default=None, max_length=40)
     startDate = models.DateField(default=None)
+    size = models.PositiveIntegerField(default=None)
     endDate = models.DateField(default=None)
     description = models.TextField(default=None, max_length=200)
     students = models.ManyToManyField(The_User, related_name='courses_completed', blank=True, null=True)
