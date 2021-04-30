@@ -9,6 +9,7 @@
       {{ course.startDate }} to {{ course.endDate }}
     </h6>
     <p class="card-text">{{ course.description }}</p>
+    <p class="card-text">There are {{ course.size }} enrolled in this class right now</p>
     {% if course.available and not course in request.user.courses_completed.all %}
     <button><a
       class="btn"
@@ -27,6 +28,7 @@
 
     <button><a class="btn" href="{% url 'course_complete' %}"> Class Completion Form</a></button>
     {% endif %}
+
   </div>
 </div>
 {% endblock content %}
