@@ -6,15 +6,15 @@
 <h1 style="margin: 1rem 1rem 1rem 1rem;">{{ user.first_name }} {{ user.last_name }}</h1>
 <h5 style="margin: 1rem 1rem 1rem 1rem">{{ user.bio }}</h5>
 </div>
-<h3>Courses I'm enrolled in</h3>
+<h3 style="margin-left: 1rem;">Courses I'm enrolled in</h3>
 {% for class in user.courses_completed.all %}
-<div class="card">
+<div class="card" style="display: grid;">
     <h5 class="card-header">{{ class.title }}</h5>
     </div>
   </div>
   {% endfor %}
 
-<h3>Courses I've Completed</h3>
+<h3 style="margin-left: 1rem;">Courses I've Completed</h3>
 {% for Sgrade in user.grade.all %}
 {% if Sgrade.student == user %}
 <div class="card">
